@@ -13,4 +13,15 @@ describe('Cell Test ', function() {
     });
 
   });
+
+  describe('reveal a new Cell ', function() {
+
+    it('should change status to UNCOVERED', function() {
+
+      let cell = new Cell();
+      cell.reveal();
+      assert.equal(cell.isInStatus('UNCOVERED'), true);
+    });
+
+  });
 });

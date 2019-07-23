@@ -2,10 +2,15 @@
 class Cell {
 
   constructor() {
-    this.status = 'COVERED' ;}
+    this.status = 'COVERED';
+  }
 
   isInStatus(askedStatus) {
     return this.status === askedStatus;
+  }
+
+  reveal() {
+    this.status = 'UNCOVERED';
   }
 
 }
