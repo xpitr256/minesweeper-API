@@ -12,5 +12,9 @@ describe('Game Test ', function() {
       assert.equal(game.isInStatus('STARTED'), true);
     });
 
+    it('should have creation date', function() {
+      assert.equal(game.isCreated(), true);
+    });
+
   });
 });
