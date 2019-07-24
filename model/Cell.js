@@ -11,7 +11,7 @@ class Cell {
   }
 
   addNeighbor(neighbor) {
-    this.neighbors.push(neighbor);
+    this.neighbors = this.content.addNeighborTo(this.neighbors, neighbor);
   }
 
   reveal() {
@@ -19,7 +19,16 @@ class Cell {
     if (this.status === 'COVERED') {
       this.status = 'UNCOVERED';
       this.neighbors.forEach((neighbor) => {
-        neighbor.reveal();
+        neighbor.indirectReveal();
+      });
+    }
+  }
+
+  indirectReveal() {
+    if (this.status === 'COVERED') {
+      this.status = this.content.getIndirectRevealedStatus();
+      this.neighbors.forEach((neighbor) => {
+        neighbor.indirectReveal();
       });
     }
   }

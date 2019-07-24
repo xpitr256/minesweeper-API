@@ -45,7 +45,7 @@ describe('Board Test ', function() {
       //TODO add more boundary cases.
     });
 
-    it('should assign neighbors for all Cells', function() {
+    it('should assign neighbors for all empty Cells', function() {
 
       let cells = [];
 
@@ -53,20 +53,25 @@ describe('Board Test ', function() {
         cells.push(...cellRow);
       });
 
-      let allCellsHaveNeighbors = cells.every((cell) => {
-        return cell.hasNeighbors();
+      let cellsWithOutNeighbors = 0;
+
+      cells.forEach((cell) => {
+        if(!cell.hasNeighbors()){
+          cellsWithOutNeighbors++;
+        }
       });
 
-      assert(allCellsHaveNeighbors);
+      assert.equal(cellsWithOutNeighbors, 10);
     });
 
   });
 
   describe('Revealing all cells ', function() {
 
-    it('should assign status UNCOVERED for all Cells', function() {
+    it('should assign status UNCOVERED for all Empty Cells', function() {
 
       let board = new Board();
+      // TODO be sure no bomb is in (0,0)
       board.reveal(0,0);
 
       let cells = [];
@@ -75,11 +80,17 @@ describe('Board Test ', function() {
         cells.push(...cellRow);
       });
 
-      let allCellsAreUncovered = cells.every((cell) => {
-        return cell.isInStatus('UNCOVERED');
+      let uncoveredCells = 0;
+
+      cells.forEach((cell) => {
+        if(cell.isInStatus('UNCOVERED')) {
+          uncoveredCells++;
+        }
       });
 
-      assert(allCellsAreUncovered);
+      let emptyCellsAmount = (board.size*board.size)- board.bombAmount;
+
+      assert.equal(emptyCellsAmount, uncoveredCells);
 
     });
   });
