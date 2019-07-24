@@ -14,22 +14,38 @@ class Cell {
     this.neighbors = this.content.addNeighborTo(this.neighbors, neighbor);
   }
 
-  reveal() {
+  shouldIRevealANeighbor() {
+    return this.content.shouldIRevealANeighbor();
+  }
 
-    if (this.status === 'COVERED') {
-      this.status = 'UNCOVERED';
+  doIHaveAnUncoveredBomb() {
+    return this.content.uncoveredBomb(this.status);
+  }
+
+  revealNeighbors() {
+    //Do not tell neighbors to reveal if 1 of them is a Bomb !!
+    let revealMyNeighbors = this.neighbors.every((neighbor)=> {
+      return neighbor.shouldIRevealANeighbor();
+    });
+
+    if (revealMyNeighbors) {
       this.neighbors.forEach((neighbor) => {
         neighbor.indirectReveal();
       });
     }
   }
 
+  reveal() {
+    if (this.status === 'COVERED') {
+      this.status = 'UNCOVERED';
+      this.revealNeighbors();
+    }
+  }
+
   indirectReveal() {
     if (this.status === 'COVERED') {
       this.status = this.content.getIndirectRevealedStatus();
-      this.neighbors.forEach((neighbor) => {
-        neighbor.indirectReveal();
-      });
+      this.revealNeighbors();
     }
   }
 

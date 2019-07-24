@@ -1,6 +1,10 @@
 
 let assert = require('assert');
 let Board = require('../../model/Board.js');
+let Bomb = require('../../model/Bomb.js');
+let Cell = require('../../model/Cell.js');
+let boardTestUtlis = require('./BoardTestUtils.js');
+
 
 describe('Board Test ', function() {
 
@@ -66,12 +70,40 @@ describe('Board Test ', function() {
 
   });
 
-  describe('Revealing all cells ', function() {
+  describe('Revealing cell (0,0)', function() {
 
-    it('should assign status UNCOVERED for all Empty Cells', function() {
+    it('should assign status UNCOVERED for all empty neighbors in a recurse way until a neighbor is a bomb.', function() {
 
-      let board = new Board();
-      // TODO be sure no bomb is in (0,0)
+      /**
+       *  N = null
+       *  B = Bomb
+       *  u = uncovered
+       *
+       *  BOARD
+       *
+       *  N N N N N N N N
+       *  N N N B N N N N
+       *  N N N N N N N N
+       *  N B N N N N N N
+       *  N N N N N N N N
+       *  N N N N N N N N
+       *  N N N N N N N N
+       *  N N N N N N N N
+       *
+       *  reveal (0,0) => Expected status
+       *
+       *  u u u N N N N N
+       *  u u u B N N N N
+       *  u u u N N N N N
+       *  N B N N N N N N
+       *  N N N N N N N N
+       *  N N N N N N N N
+       *  N N N N N N N N
+       *  N N N N N N N N
+       *
+       */
+
+      let board = boardTestUtlis.getTestBoard();
       board.reveal(0,0);
 
       let cells = [];
@@ -88,10 +120,8 @@ describe('Board Test ', function() {
         }
       });
 
-      let emptyCellsAmount = (board.size*board.size)- board.bombAmount;
-
-      assert.equal(emptyCellsAmount, uncoveredCells);
-
+      //TODO add extra test that verify that also the positions revealed are OK. (they are! but anyway do not forget to add it !!)
+      assert.equal(uncoveredCells, 9);
     });
   });
 });

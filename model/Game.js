@@ -4,10 +4,21 @@ let Board = require('./Board.js');
 
 class Game {
 
-  constructor() {
+  constructor(board) {
     this.status = 'STARTED' ;
     this.created = new Date();
-    this.board = new Board();
+    this.board = board ? board : new Board();
+  }
+
+  reveal(x, y) {
+    this.board.reveal(x,y);
+    this.updateGameStatus();
+  }
+
+  updateGameStatus() {
+    if(this.board.doIHaveAnUncoveredBomb()) {
+      this.status = 'LOST' ;
+    }
   }
 
   isInStatus(askedStatus) {

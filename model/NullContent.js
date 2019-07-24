@@ -13,6 +13,14 @@ class NullContent {
     neighbors.push(neighbor);
     return neighbors;
   }
+
+  shouldIRevealANeighbor() {
+    return true;
+  }
+
+  uncoveredBomb(status) {
+    return false;
+  }
 }
 
 module.exports = NullContent;

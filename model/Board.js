@@ -5,10 +5,10 @@ let Bomb = require('./Bomb.js');
 
 class Board {
 
-  constructor() {
+  constructor(cells) {
     this.size = 8;
     this.bombAmount = 10;
-    this.cells = this.initCells();
+    this.cells = cells ? cells : this.initCells();
   }
 
   initCells() {
@@ -65,6 +65,18 @@ class Board {
     }
 
     return false;
+  }
+
+  doIHaveAnUncoveredBomb() {
+    let cells = [];
+
+    this.cells.forEach((cellRow) => {
+      cells.push(...cellRow);
+    });
+
+    return cells.some((cell)=> {
+      return cell.doIHaveAnUncoveredBomb();
+    });
   }
 
   assignNeighborsTo(cells) {
