@@ -36,12 +36,28 @@ describe('Board Test ', function() {
 
     });
 
-    describe('and revealing invalid position (-2,14)', function(){
+    describe('and revealing invalid position (-2,14)', function() {
 
       it('should return false', function(){
         assert(!board.reveal(-2,14));
       });
 
+      //TODO add more boundary cases.
+    });
+
+    it('should assign neighbors for all Cells', function() {
+
+      let cells = [];
+
+      board.cells.forEach((cellRow) => {
+        cells.push(...cellRow);
+      });
+
+      let allCellsHaveNeighbors = cells.every((cell) => {
+        return cell.hasNeighbors();
+      });
+
+      assert(allCellsHaveNeighbors);
     });
 
   });
