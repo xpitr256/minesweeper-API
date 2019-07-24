@@ -61,4 +61,26 @@ describe('Board Test ', function() {
     });
 
   });
+
+  describe('Revealing all cells ', function() {
+
+    it('should assign status UNCOVERED for all Cells', function() {
+
+      let board = new Board();
+      board.reveal(0,0);
+
+      let cells = [];
+
+      board.cells.forEach((cellRow) => {
+        cells.push(...cellRow);
+      });
+
+      let allCellsAreUncovered = cells.every((cell) => {
+        return cell.isInStatus('UNCOVERED');
+      });
+
+      assert(allCellsAreUncovered);
+
+    });
+  });
 });

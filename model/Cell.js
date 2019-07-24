@@ -15,7 +15,13 @@ class Cell {
   }
 
   reveal() {
-    this.status = 'UNCOVERED';
+
+    if (this.status === 'COVERED') {
+      this.status = 'UNCOVERED';
+      this.neighbors.forEach((neighbor) => {
+        neighbor.reveal();
+      });
+    }
   }
 
   print() {
