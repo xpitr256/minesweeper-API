@@ -9,11 +9,11 @@ describe('Game Test ', function() {
     let game = new Game();
 
     it('should have status STARTED', function() {
-      assert.equal(game.isInStatus('STARTED'), true);
+      assert(game.isInStatus('STARTED'));
     });
 
     it('should have creation date', function() {
-      assert.equal(game.isCreated(), true);
+      assert(game.isCreated());
     });
 
   });

@@ -2,7 +2,7 @@
 class NullContent {
 
   print(){
-    return 'C';
+    return 'N';
   }
 }
 

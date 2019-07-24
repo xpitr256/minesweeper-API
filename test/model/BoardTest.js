@@ -20,11 +20,21 @@ describe('Board Test ', function() {
         return cell.print();
       });
 
-      let amountOfBombs = cells.filter(cell => cell === 'B').length;
+      let amountOfBombs = cells.filter(cell => cell === 'B COVERED').length;
 
       assert.equal(amountOfBombs, 10);
     });
 
+    describe('and revealing position (0,0)', function(){
+
+      it('should change that cell status', function(){
+
+        board.reveal(0,0);
+        assert(board.cells[0][0].isInStatus('UNCOVERED'));
+
+      });
+
+    });
 
   });
 });

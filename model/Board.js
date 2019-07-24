@@ -36,6 +36,27 @@ class Board {
     return cells;
   }
 
+  print() {
+
+    let cells = [];
+
+    for (let i = 0 ; i < this.size; i++) {
+
+      cells.push([]);
+
+      for (let j = 0 ; j < this.size; j++) {
+
+        cells[i].push(this.cells[i][j].print());
+      }
+    }
+
+    return cells;
+  }
+
+  reveal(x, y) {
+    this.cells[x][y].reveal();
+  }
+
 }
 
 module.exports = Board;

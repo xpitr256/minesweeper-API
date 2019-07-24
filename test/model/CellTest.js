@@ -10,7 +10,7 @@ describe('Cell Test ', function() {
     let cell = new Cell();
 
     it('should have status COVERED', function() {
-      assert.equal(cell.isInStatus('COVERED'), true);
+      assert(cell.isInStatus('COVERED'));
     });
   });
 
@@ -18,8 +18,8 @@ describe('Cell Test ', function() {
 
     let cell = new Cell();
 
-    it('should display C', function() {
-      assert.equal(cell.print(), 'C');
+    it('should display N', function() {
+      assert.equal(cell.print(), 'N COVERED');
     });
 
   });
@@ -29,7 +29,7 @@ describe('Cell Test ', function() {
     let cell = new Cell(new Bomb());
 
     it('should display B', function() {
-      assert.equal(cell.print(), 'B');
+      assert.equal(cell.print(), 'B COVERED');
     });
 
   });
@@ -40,7 +40,7 @@ describe('Cell Test ', function() {
 
       let cell = new Cell();
       cell.reveal();
-      assert.equal(cell.isInStatus('UNCOVERED'), true);
+      assert(cell.isInStatus('UNCOVERED'));
     });
 
   });
@@ -52,7 +52,7 @@ describe('Cell Test ', function() {
       let cell = new Cell();
       cell.reveal();
       cell.reveal();
-      assert.equal(cell.isInStatus('UNCOVERED'), true);
+      assert(cell.isInStatus('UNCOVERED'));
     });
 
   });
@@ -65,7 +65,7 @@ describe('Cell Test ', function() {
       let cell = new Cell();
       let otherCell = new Cell();
       cell.addNeighbor(otherCell);
-      assert.equal(cell.hasNeighbors(), true);
+      assert(cell.hasNeighbors());
     });
 
   });

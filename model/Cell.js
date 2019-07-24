@@ -19,7 +19,7 @@ class Cell {
   }
 
   print() {
-    return this.content.print();
+    return this.content.print() + ' ' + this.status;
   }
 
   /**
