@@ -36,5 +36,13 @@ describe('Board Test ', function() {
 
     });
 
+    describe('and revealing invalid position (-2,14)', function(){
+
+      it('should return false', function(){
+        assert(!board.reveal(-2,14));
+      });
+
+    });
+
   });
 });

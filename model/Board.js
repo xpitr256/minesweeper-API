@@ -53,8 +53,18 @@ class Board {
     return cells;
   }
 
+  isValidPosition(x,y) {
+    return x >=0 && x < this.size && y >=0 && y < this.size;
+  }
+
   reveal(x, y) {
-    this.cells[x][y].reveal();
+
+    if (this.isValidPosition(x,y)) {
+      this.cells[x][y].reveal();
+      return true;
+    }
+
+    return false;
   }
 
 }
