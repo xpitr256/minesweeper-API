@@ -1,6 +1,7 @@
 
 let assert = require('assert');
 let Cell = require('../../model/Cell.js');
+let Bomb = require('../../model/Bomb.js');
 
 describe('Cell Test ', function() {
 
@@ -10,6 +11,25 @@ describe('Cell Test ', function() {
 
     it('should have status COVERED', function() {
       assert.equal(cell.isInStatus('COVERED'), true);
+    });
+  });
+
+  describe('Creating a new empty Cell ', function() {
+
+    let cell = new Cell();
+
+    it('should has NullContent', function() {
+      assert.equal(cell.print(), 'C');
+    });
+
+  });
+
+  describe('Creating a new Cell with a Bomb ', function() {
+
+    let cell = new Cell(new Bomb());
+
+    it('should has B', function() {
+      assert.equal(cell.print(), 'B');
     });
 
   });

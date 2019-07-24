@@ -1,9 +1,13 @@
 'use strict';
+
+let NullContent = require('./NullContent.js');
+
 class Cell {
 
-  constructor() {
+  constructor(content) {
     this.status = 'COVERED';
     this.neighbors = [];
+    this.content = content ? content : new NullContent();
   }
 
   addNeighbor(neighbor) {
@@ -12,6 +16,10 @@ class Cell {
 
   reveal() {
     this.status = 'UNCOVERED';
+  }
+
+  print() {
+    return this.content.print();
   }
 
   /**
