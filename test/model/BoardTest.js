@@ -16,7 +16,11 @@ describe('Board Test ', function() {
         cells.push(...cellRow);
       });
 
-      let amountOfBombs = cells.filter(cell => cell === 'b').length;
+      cells = cells.map((cell) => {
+        return cell.print();
+      });
+
+      let amountOfBombs = cells.filter(cell => cell === 'B').length;
 
       assert.equal(amountOfBombs, 10);
     });

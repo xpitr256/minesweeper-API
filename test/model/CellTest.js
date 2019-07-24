@@ -18,7 +18,7 @@ describe('Cell Test ', function() {
 
     let cell = new Cell();
 
-    it('should has NullContent', function() {
+    it('should display C', function() {
       assert.equal(cell.print(), 'C');
     });
 
@@ -28,7 +28,7 @@ describe('Cell Test ', function() {
 
     let cell = new Cell(new Bomb());
 
-    it('should has B', function() {
+    it('should display B', function() {
       assert.equal(cell.print(), 'B');
     });
 
