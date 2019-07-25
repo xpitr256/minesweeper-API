@@ -24,14 +24,18 @@ function createTestGame(req, res) {
   });
 }
 
-function getGame(req, res) {
-
-  res.json({
+function gameStatus() {
+  return {
     status: game.status,
     created: game.created,
     elapsedTimeInSeconds: game.elapsedTimeInSeconds(),
     uncoveredPositions: game.getUncoveredPositions()
-  });
+  }
+}
+
+function getGame(req, res) {
+
+  res.json(gameStatus());
 }
 
 function revealPosition(req, res) {
@@ -40,9 +44,7 @@ function revealPosition(req, res) {
     game.reveal(req.body.x, req.body.y);
   }
 
-  res.json({
-    status: game.status
-  });
+  res.json(gameStatus());
 }
 
 
