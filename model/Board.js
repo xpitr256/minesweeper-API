@@ -67,6 +67,18 @@ class Board {
     return false;
   }
 
+  allEmptyCellsAreUncovered() {
+    let cells = [];
+
+    this.cells.forEach((cellRow) => {
+      cells.push(...cellRow);
+    });
+
+    return cells.every((cell)=> {
+      return cell.isEmptyCellUncovered();
+    });
+  }
+
   doIHaveAnUncoveredBomb() {
     let cells = [];
 

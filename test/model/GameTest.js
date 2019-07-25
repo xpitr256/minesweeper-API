@@ -22,14 +22,24 @@ describe('Game Test ', function() {
 
   describe('Playing a new Game ', function() {
 
-    let testBoard = boardTestUtlis.getTestBoard();
-    let game = new Game(testBoard);
-
     it('should have status LOST after revealing a Bomb', function() {
 
+      let testBoard = boardTestUtlis.getTestBoard();
+      let game = new Game(testBoard);
       game.reveal(1,3);
 
       assert(game.isInStatus('LOST'));
+    });
+
+    it('should have status WON after revealing all empty Cells', function() {
+
+      let testBoard = boardTestUtlis.getTestBoard();
+      let game = new Game(testBoard);
+      game.reveal(0,0);
+      game.reveal(7,7);
+      game.reveal(0,3);
+      game.reveal(3,0);
+      assert(game.isInStatus('WON'));
     });
   });
 });

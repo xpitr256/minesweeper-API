@@ -18,6 +18,10 @@ class Cell {
     return this.content.shouldIRevealANeighbor();
   }
 
+  isEmptyCellUncovered() {
+    return this.content.isEmptyCellUncovered(this.status);
+  }
+
   doIHaveAnUncoveredBomb() {
     return this.content.uncoveredBomb(this.status);
   }

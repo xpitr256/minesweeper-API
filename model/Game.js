@@ -16,8 +16,13 @@ class Game {
   }
 
   updateGameStatus() {
-    if(this.board.doIHaveAnUncoveredBomb()) {
+
+    if (this.board.doIHaveAnUncoveredBomb()) {
       this.status = 'LOST' ;
+    }
+
+    if (this.board.allEmptyCellsAreUncovered()) {
+      this.status = 'WON' ;
     }
   }
 

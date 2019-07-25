@@ -21,6 +21,10 @@ class NullContent {
   uncoveredBomb(status) {
     return false;
   }
+
+  isEmptyCellUncovered(status) {
+    return status === 'UNCOVERED'
+  }
 }
 
 module.exports = NullContent;
