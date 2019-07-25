@@ -57,6 +57,15 @@ class Cell {
     return this.content.print() + ' ' + this.status;
   }
 
+  addUncoveredPosition(positions,i,j) {
+    if (this.status === 'UNCOVERED') {
+      positions.push({
+        x:i,
+        y:j
+      });
+    }
+  }
+
   /**
    * For TEST only
    */

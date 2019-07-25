@@ -55,6 +55,10 @@ class Game {
     this.finished = undefined;
     this.board = board ? board : new Board();
   }
+
+  getUncoveredPositions() {
+    return this.board.getUncoveredPositions();
+  }
 }
 
 module.exports = new Game();

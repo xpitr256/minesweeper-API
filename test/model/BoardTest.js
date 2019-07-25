@@ -3,7 +3,8 @@ let assert = require('assert');
 let Board = require('../../model/Board.js');
 let Bomb = require('../../model/Bomb.js');
 let Cell = require('../../model/Cell.js');
-let boardTestUtlis = require('./BoardTestUtils.js');
+let boardTestUtils = require('./BoardTestUtils.js');
+let utils = require('../testUtils.js');
 
 
 describe('Board Test ', function() {
@@ -103,7 +104,7 @@ describe('Board Test ', function() {
        *
        */
 
-      let board = boardTestUtlis.getTestBoard();
+      let board = boardTestUtils.getTestBoard();
       board.reveal(0,0);
 
       let cells = [];
@@ -120,8 +121,41 @@ describe('Board Test ', function() {
         }
       });
 
-      //TODO add extra test that verify that also the positions revealed are OK. (they are! but anyway do not forget to add it !!)
       assert.equal(uncoveredCells, 9);
     });
+
+
+    it('should calculated UNCOVERED positions.', function() {
+
+      let board = boardTestUtils.getTestBoard();
+
+      board.reveal(0,0);
+
+      let expectedUncoveredPositions = [
+        { x: 0, y: 0 },
+        { x: 0, y: 1 },
+        { x: 0, y: 2 },
+        { x: 1, y: 0 },
+        { x: 1, y: 1 },
+        { x: 1, y: 2 },
+        { x: 2, y: 0 },
+        { x: 2, y: 1 },
+        { x: 2, y: 2 }
+      ];
+
+      let positions = board.getUncoveredPositions();
+
+      let comparisons = [];
+
+      positions.forEach((position, index) => {
+        comparisons.push(utils.isEquivalent(position,expectedUncoveredPositions[index]))
+      });
+
+      let allPositionAreEquals = comparisons.every((comparison) => comparison);
+
+      assert(allPositionAreEquals);
+    });
+
+
   });
 });

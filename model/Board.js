@@ -57,6 +57,21 @@ class Board {
     return x >= 0 && x < this.size && y >= 0 && y < this.size;
   }
 
+  getUncoveredPositions() {
+
+    let uncoveredPositions = [];
+
+    for (let i = 0 ; i < this.size; i++) {
+
+      for (let j = 0 ; j < this.size; j++) {
+
+        this.cells[i][j].addUncoveredPosition(uncoveredPositions,i,j);
+      }
+    }
+
+    return uncoveredPositions;
+  }
+
   reveal(x, y) {
 
     if (this.isValidPosition(x,y)) {
