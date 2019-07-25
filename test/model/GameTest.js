@@ -16,6 +16,10 @@ describe('Game Test ', function() {
       assert(game.isCreated());
     });
 
+    it('should not have finished date', function() {
+      assert(!game.isFinished());
+    });
+
   });
 
   describe('Playing a new Game ', function() {
@@ -29,6 +33,15 @@ describe('Game Test ', function() {
       assert(game.isInStatus('LOST'));
     });
 
+    it('should have finished date after loosing', function() {
+
+      let testBoard = boardTestUtlis.getTestBoard();
+      game.restartGame(testBoard);
+      game.reveal(1,3);
+
+      assert(game.isFinished());
+    });
+
     it('should have status WON after revealing all empty Cells', function() {
 
       let testBoard = boardTestUtlis.getTestBoard();
@@ -38,6 +51,18 @@ describe('Game Test ', function() {
       game.reveal(0,3);
       game.reveal(3,0);
       assert(game.isInStatus('WON'));
+    });
+
+    it('should have finished date after winning', function() {
+
+      let testBoard = boardTestUtlis.getTestBoard();
+      game.restartGame(testBoard);
+      game.reveal(0,0);
+      game.reveal(7,7);
+      game.reveal(0,3);
+      game.reveal(3,0);
+
+      assert(game.isFinished());
     });
   });
 });

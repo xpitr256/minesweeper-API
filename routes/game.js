@@ -28,7 +28,8 @@ function getGame(req, res) {
 
   res.json({
     status: game.status,
-    created: game.created
+    created: game.created,
+    elapsedTimeInSeconds: game.elapsedTimeInSeconds()
   });
 }
 
