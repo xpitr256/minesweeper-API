@@ -24,8 +24,14 @@ app.use('/', indexRouter);
 app.route("/createGame")
   .get(game.createGame);
 
+app.route("/createTestGame")
+  .get(game.createTestGame);
+
 app.route("/game")
   .get(game.getGame);
+
+app.route("/revealPosition")
+  .post(game.revealPosition);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

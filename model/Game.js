@@ -5,9 +5,7 @@ let Board = require('./Board.js');
 class Game {
 
   constructor(board) {
-    this.status = 'STARTED' ;
-    this.created = new Date();
-    this.board = board ? board : new Board();
+    this.restartGame(board)
   }
 
   reveal(x, y) {
