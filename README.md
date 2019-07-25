@@ -18,7 +18,7 @@ The game consists of a square board of 8 x 8 cells and 10 bombs. The bombs are r
 
 * **/createTestGame** Similar to **/createGame** but it always creates the following board with only 2 bombs:  
     ```javascript
-    +---------------------+
+    +-----------------+
     | N N N N N N N N |
     | N N N B N N N N |
     | N N N N N N N N |
@@ -27,7 +27,7 @@ The game consists of a square board of 8 x 8 cells and 10 bombs. The bombs are r
     | N N N N N N N N |
     | N N N N N N N N |
     | N N N N N N N N |   
-    +---------------------+
+    +-----------------+
   ```
   
   Where **N** means "Nothing" and **B** means "Bomb".
