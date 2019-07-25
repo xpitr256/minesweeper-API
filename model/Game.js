@@ -52,7 +52,7 @@ class Game {
   restartGame(board){
     this.status = 'STARTED' ;
     this.created = new Date();
-    this.finished;
+    this.finished = undefined;
     this.board = board ? board : new Board();
   }
 }
