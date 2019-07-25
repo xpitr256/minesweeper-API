@@ -1,14 +1,12 @@
 
 let assert = require('assert');
-let Game = require('../../model/Game.js');
+let game = require('../../model/Game.js');
 
 let boardTestUtlis = require('./BoardTestUtils.js');
 
 describe('Game Test ', function() {
 
   describe('Starting a new Game ', function() {
-
-    let game = new Game();
 
     it('should have status STARTED', function() {
       assert(game.isInStatus('STARTED'));
@@ -25,7 +23,7 @@ describe('Game Test ', function() {
     it('should have status LOST after revealing a Bomb', function() {
 
       let testBoard = boardTestUtlis.getTestBoard();
-      let game = new Game(testBoard);
+      game.restartGame(testBoard);
       game.reveal(1,3);
 
       assert(game.isInStatus('LOST'));
@@ -34,7 +32,7 @@ describe('Game Test ', function() {
     it('should have status WON after revealing all empty Cells', function() {
 
       let testBoard = boardTestUtlis.getTestBoard();
-      let game = new Game(testBoard);
+      game.restartGame(testBoard);
       game.reveal(0,0);
       game.reveal(7,7);
       game.reveal(0,3);

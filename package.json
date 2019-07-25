@@ -3,10 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "test": "mocha --recursive",
     "start": "node ./bin/www"
-  },
-  "scripts": {
-    "test": "mocha --recursive"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

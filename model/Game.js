@@ -33,6 +33,12 @@ class Game {
   isCreated() {
     return this.created !== undefined;
   }
+
+  restartGame(board){
+    this.status = 'STARTED' ;
+    this.created = new Date();
+    this.board = board ? board : new Board();
+  }
 }
 
-module.exports = Game;
+module.exports = new Game();
